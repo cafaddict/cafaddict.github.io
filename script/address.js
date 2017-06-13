@@ -40,7 +40,7 @@ function initMap() {
 	var infoWindow = new google.maps.InfoWindow({map: map});
 
 	// Try HTML5 geolocation.
-
+	console.log("asdfasdfasdfads");
 
 	$(document).on('click', '.prev_but', function (e){
 		var latitude = $(this).data("lat");
@@ -133,6 +133,7 @@ function initMap() {
 	google.maps.event.addListener(map, "click", function (event) {
 	    var latitude = event.latLng.lat();
 	    var longitude = event.latLng.lng();
+	    console.log("helllllo");
 	    console.log( latitude + ', ' + longitude );
 	    var pos = {
 		  lat: latitude,
