@@ -63,8 +63,10 @@ function initMap() {
 
 	//search box
 	// Create the search box and link it to the UI element.
+	console.log("before start");
 	var search_input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(search_input);
+    console.log("after searchBox");
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(search_input);
 
  	// Bias the SearchBox results towards current map's viewport.
@@ -109,35 +111,6 @@ function initMap() {
 			map.setCenter(pos);
 			geocodeLatLng(geocoder, map, infoWindow, input);
 
-
-
-            /*var icon = {
-              url: place.icon,
-              size: new google.maps.Size(71, 71),
-              origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(17, 34),
-              scaledSize: new google.maps.Size(25, 25)
-            };*/
-
-            //console.log(place.geometry.location.lat());
-            //console.log(place.geometry.lng);
-
-            // Create a marker for each place.
-            /*markers.push(new google.maps.Marker({
-              map: map,
-              icon: icon,
-              title: place.name,
-              position: place.geometry.location
-            }));*/
-
-          	  /*if(marker != null){
-          	  	marker.setMap(null);
-          	  }
-	          marker = new google.maps.Marker({
-				position: place.geometry.location,
-				title: place.name,
-				map: map
-			  });*/
 
             if (place.geometry.viewport) {
               // Only geocodes have viewport.
