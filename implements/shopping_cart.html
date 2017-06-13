@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--
+    <link rel="icon" href="../../favicon.ico">
+    -->
+
+    <title>Helvetica</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="../css/shopping_cart.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/custom.css"/> 
+	<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="./index.html">Helvetica</a>
+			  
+			  <li class="row">
+					  <li class="col-sm-4 col-sm-offset-1">
+						<li id="imaginary_container"> 
+			   			  <li class="input-group stylish-input-group">
+							<input type="text" class="form-control"  placeholder="Search" >
+							  <span class="input-group-addon">
+								  <button type="submit" onclick="location.href='search_result.html';"  >
+								    <span class="glyphicon glyphicon-search"></span>
+								  </button>
+                  
+							  </span>
+						  </li>
+						</li>
+        		      </li>
+				    </li>
+            </div>
+				
+				</ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+    </div>
+   <div class="container text-center">
+
+      <div class="col-md-5 col-sm-12">
+        <div class="bigcart"></div>
+        <h1 id = "my_cart" >Your shopping cart</h1>
+        <p>
+          
+        </p>
+      </div>
+      
+      <div class="col-md-7 col-sm-12 text-left">
+        <ul>
+          <li class="row list-inline columnCaptions">
+            <span>QTY</span>
+            <span>ITEM</span>
+            <span>Price</span>
+          </li>
+		  <div id = "cart_table">
+          
+		  </div>
+          <li class="row totals">
+            <span class="itemName">Total:</span>
+            <span id = "total_price" class="price">$0.00</span>
+            <span onclick="location.href='shopping_done.html';" class="order"> <a class="text-center">ORDER</a></span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+
+	 <div class="text-right">
+      </div>
+		
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2017 Team Helvetica, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+\
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="../script/shopping_cart.js"></script>
+	
+	
+  </body>
+</html>

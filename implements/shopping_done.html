@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Helvetica</title>
+	
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+	<!-- <link href="../css/index.css" rel="stylesheet"> -->
+
+	
+	<!-- <link href="../address.css" rel="stylesheet"> -->
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+		width: 80%;
+        height: 400px;
+		margin: 10px;
+ 
+		padding: 10px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 10px;
+        padding: 0;
+		
+      }
+
+      #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+
+      #infowindow-content {
+        display: none;
+      }
+
+      #map #infowindow-content {
+        display: inline;
+      }
+
+      .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+      }
+
+      #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+      }
+
+      .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+      }
+
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+      }
+      #target {
+        width: 345px;
+      }
+	  
+	  
+	  .customer__col--1 {
+		width: 130px;
+		border: solid #e4e4e4;
+		border-width: 0 1px 1px 0;
+		padding: 7px 10px 7px 15px;
+		font-weight: 700;
+		text-align: right;
+		background: #f4f4f4;
+		}
+		
+		.customer__col--2 {
+			border-bottom: 1px solid #e4e4e4;
+			padding: 10px 16px;
+		}
+		
+		
+		.address__col--1 {
+		width: 130px;
+		border: solid #e4e4e4;
+		border-width: 0 1px 1px 0;
+		padding: 7px 10px 7px 15px;
+		font-weight: 700;
+		text-align: right;
+		background: #f4f4f4;
+		}
+		
+		.address__col--2 {
+			border-bottom: 1px solid #e4e4e4;
+			padding: 10px 16px;
+		}
+		
+		#submit_btn {
+			margin: 10px;
+		}
+		
+		.navbar-wrapper {
+			top: 0;
+			right: 0;
+			left: 0;
+			z-index: 20;
+			margin-top: 20px;
+		}
+		
+		.navbar-wrapper .navbar {
+			padding-right: 15px;
+			padding-left: 15px;
+		}
+		
+		.navbar-wrapper .navbar .container {
+			width: auto;
+		}
+		.navbar-wrapper .navbar {
+			border-radius: 4px;
+		}
+		
+		.container {
+			padding-right: 15px;
+			padding-left: 15px;
+			margin-right: auto;
+			margin-left: auto;
+		}
+		
+    </style>
+  </head>
+  <body>
+
+    <div class="navbar-wrapper">
+      <div class="container">
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="index.html">Helvetica</a>
+            </div>	
+          </div>
+        </nav>
+      </div>
+	</div>
+    
+	
+	<div id="personal_info">
+	<div class = "container">
+		<h2 class = "customer_info"> Customer Information </h2>
+		<table class = "customer_table">
+			<tbody> 
+			
+			<tr>
+			<td class = "customer__col customer__col--1">
+				Name
+			</td>
+			
+			<td id = "user_name" class ="customer__col customer__col--2">
+				default
+			</td>
+			</tr>
+			
+			<tr>
+			<td class = "customer__col customer__col--1">
+				Account
+			</td>
+			
+			<td id = "user_account" class ="customer__col customer__col--2">
+				default
+			</td>
+			</tr>
+			
+			<tr>
+			<td class = "customer__col customer__col--1">
+				Phone number
+			</td>
+			
+			<td id = "user_phonenum" class ="customer__col customer__col--2">
+				default
+			</td>
+			</tr>
+			
+			</tbody>
+		</table>
+	</div>
+	</div>
+	
+	<div class="container">
+	<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div id="map">
+	
+	
+	</div>
+	</div>
+	
+	
+	<div id = "get_location">
+
+	<div class = "container">
+		<div class="dropdown" style="display:inline-block;">
+			<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Previous location
+			<span class="caret"></span></button>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="prev_location">    
+			</ul>
+		</div>
+
+		<button id = "current" type="button" class="btn btn-info"> Get current location </button>
+		<button id = "new_address" type="button" class="btn"> New shipping address </button>
+	</div>
+	</div>
+	
+	
+	<div id="personal_address">
+	<div class = "container">
+		<h2 class = "address_info"> Address Information </h2>
+		<table class = "address_table">
+			<tbody> 
+			
+			<tr>
+			<td class = "address__col address__col--1">
+				Country
+			</td>
+			
+			<td class ="address__col address__col--2">
+				<input id = "country" value="">
+			</td>
+			</tr>
+			
+			<tr>
+			<td class = "address__col address__col--1">
+				City
+			</td>
+			
+			<td class ="address__col address__col--2">
+				<input id = "city" value="">
+			</td>
+			</tr>
+			
+			<tr>
+			<td class = "address__col address__col--1">
+				State/Province/Region
+			</td>
+			
+			<td class ="address__col address__col--2">
+				<input id = "state" value="">
+			</td>
+			</tr>
+			
+			<tr>
+			<td class = "address__col address__col--1">
+				Postal Code
+			</td>
+			
+			<td class ="address__col address__col--2">
+				<input id = "zip" value="">
+			</td>
+			</tr>
+			
+			<tr>
+			<td class = "address__col address__col--1">
+				Address line 1 
+			</td>
+			
+			<td class ="address__col address__col--2">
+				<input id = "addr1" value="">
+			</td>
+			</tr>
+			
+			<tr>
+			<td class = "address__col address__col--1">
+				Address line 2 
+			</td>
+			
+			<td class ="address__col address__col--2">
+				<input id = "addr2" value="">
+			</td>
+			</tr>
+			
+			
+			
+			</tbody>
+		</table>
+	</div>
+	</div> 
+	
+	<div id ="submit_btn">
+	<div class = "container">
+	
+		<button type="button" class="btn btn-lg" onclick="location.href='index.html'"> Return to shopping cart </button>
+		<button id = "buy_now" type="button" class="btn btn-primary btn-lg" > Buy Now </button>
+		
+	</div>
+	</div>
+
+	
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0Zt5QRZWVhjD_r2UoSGnPkGEW_UxZJEU&language=en&libraries=places&callback=initMap">
+    </script>
+
+	<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="../script/address.js"></script>
+  </body>
+</html>
+
+ 
+
